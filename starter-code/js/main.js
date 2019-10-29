@@ -44,6 +44,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     card.onclick = function() {
       // TODO: write some code here
       console.log('Card clicked: ', card);
+      this.classList.add("turned");
     };
   });
 });
