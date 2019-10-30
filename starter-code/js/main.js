@@ -100,7 +100,7 @@ clean = () => {
 
 //Pairs clicked Display
 pairsClicked = () => {
-  document.getElementById("pairs_clicked").textContent = memoryGame.pairsClicked;
+  document.getElementById("pairs_clicked").textContent ++;
 };
 
 //Pairs Guessed Display
