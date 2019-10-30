@@ -54,9 +54,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
       clickedCards.push(card);
       counter++;
 
+      //Check cards every 2 moves, then reset the changes if not guessed
       if(counter == 2){
         card1 = clickedCards[0].dataset.cardName;
         card2 = clickedCards[1].dataset.cardName;
+
 
         if(memoryGame.checkIfPair(card1, card2)){
          clickedCards[0].classList.add("guessed");
@@ -68,34 +70,19 @@ document.addEventListener("DOMContentLoaded", function(event) {
         
         setTimeout(clean, 600);
       };
-      
-        
-
-        
-
-
-
     };
   });
 });
 
 
 clean = () => {
-
   clickedCards.forEach( card => {
     let searchg = card.classList.value.search("guessed");
-    if(searchg = -1){
-      console.log("passed")
+    if(searchg < 0){
       card.classList.remove("turned");
-    }
-    })
+    };
+  });
     
-    clickedCards = [];
-    counter = 0;
-
+  clickedCards = [];
+  counter = 0;
 };
-  
-
-
-
-
