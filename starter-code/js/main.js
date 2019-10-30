@@ -33,6 +33,9 @@ const cards = [
 
 const memoryGame = new MemoryGame(cards);
 
+//Generate random cards
+memoryGame.shuffleCards();
+
 document.addEventListener("DOMContentLoaded", function(event) { 
   let html = '';
   memoryGame.cards.forEach(pic => {
@@ -58,11 +61,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
       if(counter == 2){
         card1 = clickedCards[0].dataset.cardName;
         card2 = clickedCards[1].dataset.cardName;
-
+        pairsClicked();
 
         if(memoryGame.checkIfPair(card1, card2)){
          clickedCards[0].classList.add("guessed");
          clickedCards[1].classList.add("guessed");
+         pairsGuessed();
                    
         }else{
           setTimeout(clean, 700);
@@ -70,19 +74,36 @@ document.addEventListener("DOMContentLoaded", function(event) {
         
         setTimeout(clean, 700);
       };
-    };
+
+      if(memoryGame.isFinished()){
+        console.log("Congratulations! Play Again¿?");
+        
+      }
+    };    
   });
 });
 
 
+//Function to reset the changes except the guessed pairs
 clean = () => {
   clickedCards.forEach( card => {
     let searchg = card.classList.value.search("guessed");
     if(searchg < 0){
       card.classList.remove("turned");
+
     };
   });
     
   clickedCards = [];
   counter = 0;
+};
+
+//Pairs clicked Display
+pairsClicked = () => {
+  document.getElementById("pairs_clicked").textContent = memoryGame.pairsClicked;
+};
+
+//Pairs Guessed Display
+pairsGuessed = () => {
+  document.getElementById("pairs_guessed").textContent = memoryGame.pairsGuessed;
 };
