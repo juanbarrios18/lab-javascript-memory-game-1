@@ -1,3 +1,9 @@
+//Clicked cards counter
+let = counter = 0;
+
+//Array with the details of clicked cards
+let clickedCards = [];
+
 const cards = [
   { name: 'aquaman',         img: 'aquaman.jpg' },
   { name: 'batman',          img: 'batman.jpg' },
@@ -45,8 +51,51 @@ document.addEventListener("DOMContentLoaded", function(event) {
       // TODO: write some code here
       console.log('Card clicked: ', card);
       this.classList.add("turned");
+      clickedCards.push(card);
+      counter++;
+
+      if(counter == 2){
+        card1 = clickedCards[0].dataset.cardName;
+        card2 = clickedCards[1].dataset.cardName;
+
+        if(memoryGame.checkIfPair(card1, card2)){
+         clickedCards[0].classList.add("guessed");
+         clickedCards[1].classList.add("guessed");
+                   
+        }else{
+          setTimeout(clean, 600);
+        };
+        
+        setTimeout(clean, 600);
+      };
+      
+        
+
+        
+
+
+
     };
   });
 });
+
+
+clean = () => {
+
+  clickedCards.forEach( card => {
+    let searchg = card.classList.value.search("guessed");
+    if(searchg = -1){
+      console.log("passed")
+      card.classList.remove("turned");
+    }
+    })
+    
+    clickedCards = [];
+    counter = 0;
+
+};
+  
+
+
 
 
