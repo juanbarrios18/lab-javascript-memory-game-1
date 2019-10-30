@@ -65,10 +65,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
          clickedCards[1].classList.add("guessed");
                    
         }else{
-          setTimeout(clean, 600);
+          setTimeout(clean, 700);
         };
         
-        setTimeout(clean, 600);
+        setTimeout(clean, 700);
       };
     };
   });
